@@ -30,14 +30,14 @@ applications:
   #  project: dev-svcs
   #  directory: cert-manager
 
-  # eg-backend
-  - name: "eg-backend"
+  # backend
+  - name: "backend"
     project: dev-apps
-    directory: eg-backend
-    namespace: dev-eg-backend
+    directory: backend
+    namespace: dev-backend
 
-  # eg-tile-server
-  - name: "eg-tile-server"
+  # tile-server
+  - name: "tile-server"
     project: dev-apps
-    directory: eg-tile-server
-    namespace: dev-eg-tile-server
+    directory: tile-server
+    namespace: dev-tile-server
