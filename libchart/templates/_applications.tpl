@@ -49,14 +49,9 @@ spec:
     repoURL: "{{ $.Values.repoUrl }}"
     targetRevision: "HEAD"
 
-    plugin:
-      # The argocd-vault-plugin-helm definition is configured here: tf-argocd/argocd-vault-plugin-helm.yaml
-      # The section below is based on https://argocd-vault-plugin.readthedocs.io/en/stable/usage/. Besides providing the value files to parse, we configure the
-      # --kube-version and --api-versions settings provided by helm (https://helm.sh/docs/helm/helm_template/). They are used by some charts like Zabbix to know which api versions use.
-      name: argocd-vault-plugin-helm
-      env:
-        - name: HELM_ARGS
-          value: --kube-version={{ $.Values.kubeVersion }} --api-versions={{ $.Values.apiVersions }} -f values.yaml
+    helm:
+      valueFiles:
+        - values.yaml
 
   syncPolicy:
     {{- if $app.disableAutomatedSyncs }}
