@@ -1,0 +1,43 @@
+# Applications for "prod" environment
+
+#repoUrl: "git@github.com:leandroblanc/gitops_test.git"
+repoUrl: "https://github.com/leandroblanc/gitops_test.git"
+basePath: "prod"
+
+slackChannel: ""
+
+kubeVersion: "1.30"
+apiVersions: "batch/v1/CronJob"
+
+# Clusters
+clusters:
+  - name: "minikube"
+    #url: "https://0A5384545778AB4D2684879029D68361.sk1.us-west-1.eks.amazonaws.com"
+    url: "https://kubernetes.default.svc"
+
+# Projects
+projects:
+  - name: "prod-svcs"
+    description: "Services (prod)"
+
+  - name: "prod-apps"
+    description: "Applications (prod)"
+
+# Applications
+applications:
+  # cert-manager
+  #- name: "cert-manager"
+  #  project: prod-svcs
+  #  directory: cert-manager
+
+  # backend
+  - name: "backend"
+    project: prod-apps
+    directory: backend
+    namespace: prod-backend
+
+  # tile-server
+  - name: "tile-server"
+    project: prod-apps
+    directory: tile-server
+    namespace: prod-tile-server
