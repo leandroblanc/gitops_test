@@ -1,0 +1,4 @@
+{{- include "libchart.applications" . }}
+---
+{{- include "libchart.projects" . }}
+---

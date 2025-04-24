@@ -1,0 +1,43 @@
+# Applications for "stage" environment
+
+#repoUrl: "git@github.com:leandroblanc/gitops_test.git"
+repoUrl: "https://github.com/leandroblanc/gitops_test.git"
+basePath: "stage"
+
+slackChannel: ""
+
+kubeVersion: "1.30"
+apiVersions: "batch/v1/CronJob"
+
+# Clusters
+clusters:
+  - name: "minikube"
+    #url: "https://0A5384545778AB4D2684879029D68361.sk1.us-west-1.eks.amazonaws.com"
+    url: "https://kubernetes.default.svc"
+
+# Projects
+projects:
+  - name: "stage-svcs"
+    description: "Services (stage)"
+
+  - name: "stage-apps"
+    description: "Applications (stage)"
+
+# Applications
+applications:
+  # cert-manager
+  #- name: "cert-manager"
+  #  project: stage-svcs
+  #  directory: cert-manager
+
+  # backend
+  - name: "backend"
+    project: stage-apps
+    directory: backend
+    namespace: stage-backend
+
+  # tile-server
+  - name: "tile-server"
+    project: stage-apps
+    directory: tile-server
+    namespace: stage-tile-server

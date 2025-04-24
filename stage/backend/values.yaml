@@ -1,0 +1,40 @@
+image:
+  repository: nginx
+  tag: "latest"
+  pullPolicy: IfNotPresent
+env:
+  configmap:
+    CONFIG_ONE: "value1"
+    CONFIG_TWO: "value2"
+# A special service account is only needed if we need access to AWS resources like S3 buckets etc
+#serviceAccounts:
+#  - name: backend
+#    irsaRoleArn: "arn:aws:iam::XXXXXXXXXXXX:role/irsa-backend"
+deployments:
+  - name: backend
+    #serviceAccountName: backend
+    resources:
+      limits:
+        cpu: 100m
+        memory: 200Mi
+      requests:
+        cpu: 50m
+        memory: 10Mi
+horizontalPodAutoscalers:
+  # Application autoscaling
+  - deploymentName: backend
+    minReplicas: 2
+    maxReplicas: 2
+    targetCPUUtilizationPercentage: 50
+    targetMemoryUtilizationPercentage: 50
+services:
+  - deploymentName: backend
+    appProtocol: http
+    port: 8080
+    targetPort: 8080
+# Memcached configuration
+#memcached:
+#  fullnameOverride: memcached
+#  automountServiceAccountToken: true
+#  service:
+#    type: ClusterIP
