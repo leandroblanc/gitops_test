@@ -15,7 +15,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "{{ $cluster.name }}-{{ $app.name }}"
+  name: "{{ $.Values.basePath }}-{{ $app.name }}"
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
