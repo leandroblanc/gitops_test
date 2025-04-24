@@ -8,11 +8,11 @@ env:
     CONFIG_TWO: "value2"
 # A special service account is only needed if we need access to AWS resources like S3 buckets etc
 #serviceAccounts:
-#  - name: backend
-#    irsaRoleArn: "arn:aws:iam::XXXXXXXXXXXX:role/irsa-backend"
+#  - name: tile-server
+#    irsaRoleArn: "arn:aws:iam::XXXXXXXXXXXX:role/irsa-tile-server"
 deployments:
-  - name: backend
-    #serviceAccountName: backend
+  - name: tile-server
+    #serviceAccountName: tile-server
     resources:
       limits:
         cpu: 100m
@@ -22,13 +22,13 @@ deployments:
         memory: 10Mi
 horizontalPodAutoscalers:
   # Application autoscaling
-  - deploymentName: backend
+  - deploymentName: tile-server
     minReplicas: 2
     maxReplicas: 2
     targetCPUUtilizationPercentage: 50
     targetMemoryUtilizationPercentage: 50
 services:
-  - deploymentName: backend
+  - deploymentName: tile-server
     appProtocol: http
     port: 8080
     targetPort: 8080
