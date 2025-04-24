@@ -1,9 +1,8 @@
-# Applications for "test" clusterset
-# For details about the configurations, see the docs/argocd/README.md file
+# Applications for "dev" environment
 
 #repoUrl: "git@github.com:leandroblanc/gitops_test.git"
 repoUrl: "https://github.com/leandroblanc/gitops_test.git"
-basePath: "test"
+basePath: "dev"
 
 slackChannel: ""
 
