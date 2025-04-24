@@ -75,8 +75,8 @@ spec:
       labels:
         app.kubernetes.io/name: {{ .name }}
     spec:
-      imagePullSecrets:
-      - name: docker-registry
+      #imagePullSecrets:
+      #- name: docker-registry
       {{- if .nodeSelector }}
       nodeSelector:
         {{- toYaml .nodeSelector | nindent 8 }}
