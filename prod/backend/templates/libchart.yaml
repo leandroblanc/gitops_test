@@ -1,0 +1,14 @@
+{{- include "libchart.namespace" . }}
+---
+{{- include "libchart.configmap" . }}
+---
+{{- include "libchart.deployments" . }}
+---
+{{- include "libchart.ingresses" . }}
+---
+{{- include "libchart.services" . }}
+---
+{{- include "libchart.horizontalPodAutoscalers" . }}
+---
+{{- include "libchart.serviceAccounts" . }}
+---
