@@ -56,7 +56,7 @@ spec:
       name: argocd-vault-plugin-helm
       env:
         - name: HELM_ARGS
-          value: --kube-version={{ $.Values.kubeVersion }} --api-versions={{ $.Values.apiVersions }} -f values.yaml {{ $extraValuesFilesArguments }}
+          value: --kube-version={{ $.Values.kubeVersion }} --api-versions={{ $.Values.apiVersions }} -f values.yaml
 
   syncPolicy:
     {{- if $app.disableAutomatedSyncs }}
