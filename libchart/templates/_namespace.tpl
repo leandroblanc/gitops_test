@@ -1,0 +1,7 @@
+{{- define "libchart.namespace" }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Release.Namespace }}
+---
+{{- end }}}
