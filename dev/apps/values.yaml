@@ -1,0 +1,43 @@
+# Applications for "test" clusterset
+# For details about the configurations, see the docs/argocd/README.md file
+
+repoUrl: "git@github.com:klusterix/argocd.git"
+basePath: "test"
+
+slackChannel: "<path:eks/test/slack#CHANNEL_NAME>"
+
+kubeVersion: "1.30"
+apiVersions: "batch/v1/CronJob"
+
+# Clusters
+clusters:
+  - name: "minikube"
+    #url: "https://0A5384545778AB4D2684879029D68361.sk1.us-west-1.eks.amazonaws.com"
+    url: "https://kubernetes.default.svc"
+
+# Projects
+projects:
+  - name: "dev-svcs"
+    description: "Services (dev)"
+
+  - name: "dev-apps"
+    description: "Applications (dev)"
+
+# Applications
+applications:
+  # cert-manager
+  #- name: "cert-manager"
+  #  project: dev-svcs
+  #  directory: cert-manager
+
+  # eg-backend
+  - name: "eg-backend"
+    project: dev-apps
+    directory: eg-backend
+    namespace: dev-eg-backend
+
+  # eg-tile-server
+  - name: "eg-tile-server"
+    project: dev-apps
+    directory: eg-tile-server
+    namespace: dev-eg-tile-server

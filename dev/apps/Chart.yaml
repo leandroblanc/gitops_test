@@ -1,0 +1,11 @@
+apiVersion: v2
+name: apps
+description: This helm chart creates the ArgoCD applications for this environment
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+
+dependencies:
+- name: libchart
+  version: 1.0.0
+  repository: file://../../libchart/
