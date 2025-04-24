@@ -5,6 +5,8 @@
 ```
 module "argocd" {
   source = "../../../modules/argo"
+
+  # ... argocd settings
 }
 
 # Perform the ArgoCD bootstrapping by creating the Root App ("App of Apps"): https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/
