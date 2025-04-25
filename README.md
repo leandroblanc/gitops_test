@@ -1,5 +1,17 @@
 # gitops_test
 
+## Minikube Cluster
+
+1. Install docker
+
+1. sudo usermod -aG docker $USER && newgrp docker
+
+1. curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+
+1. sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
+1. minikube start --driver=docker
+
 ## argocd.tf file
 
 ```
