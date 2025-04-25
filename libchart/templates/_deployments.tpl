@@ -137,8 +137,10 @@ spec:
         envFrom:
           - configMapRef:
               name: {{ $.Release.Name }}-configmap
-          #- secretRef:
-          #    name: {{ $.Release.Name }}-secret
+          {{- if .secretName }}
+          - secretRef:
+              name: {{ .secretName }}
+          {{- end }}
         livenessProbe:
           {{- toYaml .livenessProbe | nindent 10 }}
         readinessProbe:
