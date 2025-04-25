@@ -13,6 +13,8 @@ env:
 deployments:
   - name: backend
     #serviceAccountName: backend
+    # See templates directory. In production, this secret will be created by external-secrets operator
+    secretName: my-secret
     resources:
       limits:
         cpu: 100m
