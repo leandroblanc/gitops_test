@@ -78,3 +78,14 @@ resource "kubectl_manifest" "environments" {
   depends_on = [module.argocd]
 }
 ```
+
+## Deployment
+
+1. terraform init
+
+1. terraform apply
+
+1. kubectl port-forward service/argocd-server 8080:80 -n argocd
+
+1. Visit http://localhost:8080
+
