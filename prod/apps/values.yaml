@@ -25,10 +25,10 @@ projects:
 
 # Applications
 applications:
-  # cert-manager
-  #- name: "cert-manager"
-  #  project: prod-svcs
-  #  directory: cert-manager
+  # external-secrets
+  - name: "external-secrets"
+    project: prod-svcs
+    directory: external-secrets
 
   # backend
   - name: "backend"

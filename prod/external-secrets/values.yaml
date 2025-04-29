@@ -1,0 +1,5 @@
+external-secrets:
+  installCRDs: true  # Install Custom Resource Definitions (CRDs)
+  webhook:
+    port: 10250
+    certDir: /tmp/k8s-webhook-server/serving-certs
