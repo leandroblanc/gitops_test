@@ -1,20 +1,26 @@
 {{- define "libchart.externalSecret" }}
+{{- range $store := .Values.externalSecrets }}
+---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: {{ $.Release.Name }}-externalsecret
+  name: {{ $.Release.Name }}-{{ $store.secretStoreName | kebabcase }}-secret
+  labels:
+    app.kubernetes.io/name: {{ $.Release.Name }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
 spec:
   refreshInterval: 1h
   secretStoreRef:
-    name: {{ $.Values.externalSecretStoreName | default "aws-secret-store" }}
-    kind: SecretStore
+    name: {{ $store.secretStoreName }}
+    kind: {{ $store.secretStoreType | default "ClusterSecretStore" }}
   target:
-    name: {{ $.Release.Name }}-secret
+    name: {{ $.Release.Name }}-{{ $store.secretStoreName | kebabcase }}-secret
     creationPolicy: Owner
   data:
-  {{- range $key, $value := $.Values.env.secrets }}
-  - secretKey: {{ $key }}
-    remoteRef:
-      key: {{ $value.name }}  # Works for both Secrets Manager and SSM
-  {{- end }}
+    {{- range $secret := $store.secrets }}
+    - secretKey: {{ $secret.name }}
+      remoteRef:
+        key: {{ $secret.path }}
+    {{- end }}
+{{- end }}
 {{- end }}
