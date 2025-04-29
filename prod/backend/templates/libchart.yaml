@@ -12,3 +12,5 @@
 ---
 {{- include "libchart.serviceAccounts" . }}
 ---
+{{- include "libchart.externalSecret" . }}
+---
