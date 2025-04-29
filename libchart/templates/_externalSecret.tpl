@@ -9,7 +9,7 @@ spec:
     name: {{ $.Values.externalSecretStoreName | default "aws-secret-store" }}
     kind: SecretStore
   target:
-    name: {{ $.Values.fullnameOverride }}-secret
+    name: {{ $.Release.Name }}-secret
     creationPolicy: Owner
   data:
   {{- range $key, $value := $.Values.env.secrets }}
