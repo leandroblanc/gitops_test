@@ -6,7 +6,7 @@ metadata:
 spec:
   refreshInterval: 1h
   secretStoreRef:
-    name: {{ $.Values.externalSecret.secretStore.name | default "aws-secret-store" }}
+    name: {{ $.Values.externalSecretStoreName | default "aws-secret-store" }}
     kind: SecretStore
   target:
     name: {{ $.Values.fullnameOverride }}-secret
