@@ -1,0 +1,15 @@
+# https://external-secrets.io/latest/api/secretstore/
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: ssm-store
+spec:
+  provider:
+    aws:
+      # https://external-secrets.io/latest/api/spec/
+      service: ParameterStore
+      region: {{ .Values.templates.awsRegion }}
+      auth:
+        jwt:
+          serviceAccountRef:
+            name: external-secrets-sa

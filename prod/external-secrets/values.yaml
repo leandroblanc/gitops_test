@@ -3,3 +3,7 @@ external-secrets:
   webhook:
     port: 10250
     certDir: /tmp/k8s-webhook-server/serving-certs
+
+templates:
+  awsRegion: us-east-1
+  irsaRole: arn:aws:iam::123456789012:role/external-secrets-role
