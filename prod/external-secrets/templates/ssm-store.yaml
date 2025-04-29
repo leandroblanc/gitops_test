@@ -1,6 +1,6 @@
 # https://external-secrets.io/latest/api/secretstore/
 apiVersion: external-secrets.io/v1beta1
-kind: SecretStore
+kind: ClusterSecretStore
 metadata:
   name: ssm-store
 spec:
