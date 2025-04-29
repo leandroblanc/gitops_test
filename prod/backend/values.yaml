@@ -6,22 +6,22 @@ env:
   configmap:
     CONFIG_ONE: "value1"
     CONFIG_TWO: "value2"
-  secrets:
-    ADMIN_PRIVATE_KEY:
-      name: /test/produccion/backend/live-ADMIN_PRIVATE_KEY
-      provider: secretsManager
-    API_KEY:
-      name: /test/produccion/backend/API-KEY
-      provider: ssm
-    GAS_STATION_CONTRACT_ADDRESS:
-      name: /test/produccion/backend/GAS_STATION_CONTRACT_ADDRESS
-      provider: ssm
-    MANAGERS:
-      name: /test/produccion/backend/live-MANAGERS
-      provider: secretsManager
-    POSTGRES_DB_URL:
-      name: /test/produccion/backend/live-POSTGRE_DB_URL
-      provider: secretsManager
+
+# External Secrets
+externalSecrets:
+  - secretStoreName: ssm-store
+    secrets:
+      - name: API_KEY
+        path: /test/produccion/backend/API-KEY
+      - name: GAS_STATION_CONTRACT_ADDRESS:
+        path: /test/produccion/backend/GAS_STATION_CONTRACT_ADDRESS
+  - secretStoreName: secrets-store
+    secrets:
+      - name: ADMIN_PRIVATE_KEY:
+        path: /test/produccion/backend/live-ADMIN_PRIVATE_KEY
+      - name: POSTGRES_DB_URL:
+        path: /test/produccion/backend/live-POSTGRE_DB_URL
+
 # A special service account is only needed if we need access to AWS resources like S3 buckets etc
 #serviceAccounts:
 #  - name: backend
